@@ -34,7 +34,7 @@ def check_password_strength(password):
 
     return True
 
-# Ask the user
+
 user_password = input("Enter your password: ")
 
 if check_password_strength(user_password):
