@@ -51,7 +51,7 @@ app = Flask(__name__)
 def get_config():
     conn = pymysql.connect(**mysql_config)
     cursor = conn.cursor()
-    cursor.execute("SELECT config_json FROM configuration ORDER BY id DESC LIMIT 1")
+    cursor.execute("SELECT config_json FROM configuration")
     result = cursor.fetchone()
     conn.close()
     config_dict = json.loads(result['config_json'])
@@ -59,7 +59,7 @@ def get_config():
     yaml_data = yaml.dump(safe_dict, sort_keys=False)
     return Response(yaml_data, mimetype='text/yaml')
 
-config_path = r"C:\Users\Shashi\OneDrive\Documents\Shashi_HeroVired13\HeroVired13Assignment\config.ini"
+config_path = r"C:\Users\Shashi\OneDrive\Documents\Shashi_HeroVired13\HeroVired13Assignment\ReadConfigFile\config.ini"
 config_data = check_config(config_path)
 
 if config_data:
